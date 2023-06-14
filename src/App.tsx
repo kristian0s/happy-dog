@@ -4,8 +4,9 @@ import IconNotification from "./assets/icons/notification";
 import Button from "./components/button";
 import Container from "./components/container";
 import Devider from "./components/devider";
-import Input from "./components/imput";
+import Input from "./components/input";
 import "./styles/styles.scss";
+import Modal from "./components/modal";
 
 type ValuesType = {
   [key: string]: string;
@@ -19,6 +20,7 @@ const obj: ValuesType = {
 function App() {
   const [inputsValue, setInputsValue] = useState<ValuesType>(obj);
   const [newState, setNewState] = useState<string>("");
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleInputsValue = (value: string, id: string) => {
     const newState: ValuesType = { ...inputsValue };
@@ -40,6 +42,7 @@ function App() {
         <Input
           value={inputsValue.firstName}
           icon={<IconMoney />}
+          disabled={true}
           placeholder="First name"
           onChange={(value: string) => handleInputsValue(value, "firstName")}
         />
@@ -54,6 +57,11 @@ function App() {
           onChange={(value: string) => setNewState(value)}
         />
         <button onClick={() => console.log(inputsValue)}>Get values</button>
+      </Container>
+      <Container size="md">
+        <Modal title="modal">
+          <Button text="Open modal!" />
+        </Modal>
       </Container>
     </>
   );
