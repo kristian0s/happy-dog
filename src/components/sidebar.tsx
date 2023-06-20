@@ -5,7 +5,7 @@ type SidebarProps = {
   onClose: () => void;
 };
 
-type LinkType = {
+export type LinkType = {
   path: string;
   label: string;
 };
@@ -26,9 +26,16 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     <div className={`sidebar ${isOpen ? "isActive" : ""}`}>
       {linkList.map((link) => {
         return (
-          <NavLink onClick={onClose} className="sidebar__link" to={link.path}>
-            {link.label}
-          </NavLink>
+          <div className="sidebar__link__wrapper">
+            <NavLink
+              key={link.path}
+              onClick={onClose}
+              className="sidebar__link"
+              to={link.path}
+            >
+              {link.label}
+            </NavLink>
+          </div>
         );
       })}
     </div>

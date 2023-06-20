@@ -1,11 +1,24 @@
 import { NavLink } from "react-router-dom";
 import logo from "./../assets/images/dog.png";
+import { LinkType } from "./sidebar";
 
 type HeaderProps = {
   toggleSidebar: () => void;
+  onClose: () => void;
 };
 
-const Header = ({ toggleSidebar }: HeaderProps) => {
+const headerLinks: LinkType[] = [
+  {
+    path: "/",
+    label: "Home",
+  },
+  {
+    path: "/contact",
+    label: "Kontakt",
+  },
+];
+
+const Header = ({ toggleSidebar, onClose }: HeaderProps) => {
   return (
     <div className="header__wrapper">
       <header className="header">
@@ -16,12 +29,18 @@ const Header = ({ toggleSidebar }: HeaderProps) => {
           alt="animated dog"
         />
         <nav className="header__nav">
-          <NavLink className="header__nav__link" to="/">
-            Home
-          </NavLink>
-          <NavLink className="header__nav__link" to="/contact">
-            Contact
-          </NavLink>
+          {headerLinks.map((link) => {
+            return (
+              <NavLink
+                key={link.path}
+                onClick={onClose}
+                className="header__nav__link"
+                to={link.path}
+              >
+                {link.label}
+              </NavLink>
+            );
+          })}
         </nav>
       </header>
     </div>
