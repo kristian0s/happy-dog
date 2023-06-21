@@ -1,0 +1,19 @@
+.progress__box {
+  height: 1.5rem;
+  background-color: var(--color-gray-500);
+  border-radius: var(--rounded-border);
+  margin: 3rem;
+}
+
+.progressMoving {
+  height: 100%;
+  background-color: var(--color-brown-500);
+  border-radius: inherit;
+  text-align: right;
+
+  &__lbl {
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+  }
+}

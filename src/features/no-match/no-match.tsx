@@ -12,9 +12,7 @@ const NoMatch = () => {
           />
           <div>
             <h1 className="no-match__title">404</h1>
-            <h4 className="no-match__desc">
-              Nothing to see here, please move along
-            </h4>
+            <h4 className="no-match__desc">There's nothing here sadly...</h4>
           </div>
         </div>
       </Container>
