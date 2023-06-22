@@ -4,8 +4,7 @@ import Contact from "./features/contact/contact";
 import Home from "./features/home/home";
 import NoMatch from "./features/no-match/no-match";
 import "./styles/styles.scss";
-import ProgressBar from "./features/progress-bar/progress-bar";
-import ProgressBarPage from "./components/progressPage";
+import ProgressBarPage from "./features/progress-bar/progress-page";
 
 function App() {
   return (
