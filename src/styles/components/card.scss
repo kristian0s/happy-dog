@@ -1,0 +1,42 @@
+.card {
+  padding: 1rem;
+  background-color: var(--color-gray-100);
+  border-radius: var(--border-rounded);
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    &__img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: var(--border-circle);
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  &__subtitle {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+  }
+
+  &__row {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+
+    svg {
+      display: block;
+      margin-right: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

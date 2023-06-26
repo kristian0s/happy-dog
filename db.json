@@ -1,0 +1,144 @@
+{
+  "animals": [
+    {
+      "name": "Lion",
+      "species": "Panthera leo",
+      "class": "Mammal",
+      "diet": "Carnivore",
+      "habitat": "Grasslands and savannas"
+    },
+    {
+      "name": "Elephant",
+      "species": "Loxodonta africana",
+      "class": "Mammal",
+      "diet": "Herbivore",
+      "habitat": "Forests and grasslands"
+    },
+    {
+      "name": "Tiger",
+      "species": "Panthera tigris",
+      "class": "Mammal",
+      "diet": "Carnivore",
+      "habitat": "Various habitats, including forests and grasslands"
+    },
+    {
+      "name": "Giraffe",
+      "species": "Giraffa camelopardalis",
+      "class": "Mammal",
+      "diet": "Herbivore",
+      "habitat": "Savannas and open woodlands"
+    },
+    {
+      "name": "Penguin",
+      "species": "Spheniscidae",
+      "class": "Bird",
+      "diet": "Carnivore",
+      "habitat": "Antarctica and the surrounding areas"
+    },
+    {
+      "name": "Cheetah",
+      "species": "Acinonyx jubatus",
+      "class": "Mammal",
+      "diet": "Carnivore",
+      "habitat": "Grasslands and open plains"
+    },
+    {
+      "name": "Gorilla",
+      "species": "Gorilla gorilla",
+      "class": "Mammal",
+      "diet": "Herbivore",
+      "habitat": "Rainforests"
+    },
+    {
+      "name": "Kangaroo",
+      "species": "Macropus",
+      "class": "Mammal",
+      "diet": "Herbivore",
+      "habitat": "Grasslands and forests"
+    },
+    {
+      "name": "Eagle",
+      "species": "Accipitridae",
+      "class": "Bird",
+      "diet": "Carnivore",
+      "habitat": "Various habitats, including mountains and forests"
+    },
+    {
+      "name": "Dolphin",
+      "species": "Delphinidae",
+      "class": "Mammal",
+      "diet": "Carnivore",
+      "habitat": "Oceans and seas"
+    },
+    {
+      "name": "Panda",
+      "species": "Ailuropoda melanoleuca",
+      "class": "Mammal",
+      "diet": "Herbivore",
+      "habitat": "Bamboo forests"
+    },
+    {
+      "name": "Gorilla",
+      "species": "Gorilla gorilla",
+      "class": "Mammal",
+      "diet": "Herbivore",
+      "habitat": "Rainforests"
+    },
+    {
+      "name": "Koala",
+      "species": "Phascolarctos cinereus",
+      "class": "Mammal",
+      "diet": "Herbivore",
+      "habitat": "Eucalyptus forests"
+    },
+    {
+      "name": "Hippopotamus",
+      "species": "Hippopotamus amphibius",
+      "class": "Mammal",
+      "diet": "Herbivore",
+      "habitat": "Rivers and lakes"
+    },
+    {
+      "name": "Peacock",
+      "species": "Pavo cristatus",
+      "class": "Bird",
+      "diet": "Omnivore",
+      "habitat": "Grasslands and forests"
+    },
+    {
+      "name": "Crocodile",
+      "species": "Crocodylus niloticus",
+      "class": "Reptile",
+      "diet": "Carnivore",
+      "habitat": "Rivers and wetlands"
+    },
+    {
+      "name": "Polar Bear",
+      "species": "Ursus maritimus",
+      "class": "Mammal",
+      "diet": "Carnivore",
+      "habitat": "Arctic regions"
+    },
+    {
+      "name": "Giant Panda",
+      "species": "Ailuropoda melanoleuca",
+      "class": "Mammal",
+      "diet": "Herbivore",
+      "habitat": "Bamboo forests"
+    },
+    {
+      "name": "Gibbon",
+      "species": "Hylobatidae",
+      "class": "Mammal",
+      "diet": "Herbivore",
+      "habitat": "Tropical rainforests"
+    },
+    {
+      "name": "Ostrich",
+      "species": "Struthio camelus",
+      "class": "Bird",
+      "diet": "Omnivore",
+      "habitat": "Grasslands and deserts"
+    }
+  ]
+}
