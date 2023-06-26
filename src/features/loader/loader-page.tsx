@@ -9,6 +9,9 @@ const LoaderPage = () => {
 
   const handleLoader = () => {
     setLoaderOpen(!loaderOpen);
+    setTimeout(() => {
+      setLoaderOpen(false);
+    }, 2000);
   };
 
   return (
