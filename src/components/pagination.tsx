@@ -1,5 +1,5 @@
 type PaginationProps = {
-  onPaginate: () => void;
+  onPaginate: (page: number) => void;
 };
 
 const Pagination = ({ onPaginate }: PaginationProps) => {

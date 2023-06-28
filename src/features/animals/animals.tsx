@@ -23,8 +23,12 @@ const Animals = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [page, setPage] = useState<number>(1);
   const getAnimals = () => {
-    fetch(`http://localhost:3000/animals?_page=${page}&_limit=${8}`)
-      .then((res) => {)
+    fetch(`http://localhost:3000/animals?_page=${page}&_limit=${rpp}`)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
       .then((data) => {
         setTimeout(() => {
           setAnimalsData(data);
@@ -44,7 +48,7 @@ const Animals = () => {
       <h1>Animals</h1>
       <Devider />
       <div className="grid grid--primary">
-        {animalsData.map((animal: AnimalsType) => {
+        {animalsData.map((animal) => {
           return <AnimalCard key={animal.name} animal={animal} />;
         })}
       </div>

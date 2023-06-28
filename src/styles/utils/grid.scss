@@ -3,7 +3,7 @@
   &--primary {
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
     @media (min-width: $media-sm) {
       grid-template-columns: repeat(2, 1fr);
     }
