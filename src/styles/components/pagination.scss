@@ -27,5 +27,15 @@
       color: var(--color-gray-900);
       border-color: var(--color-brown-600);
     }
+
+    &.isDisabled {
+      opacity: 0.5;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    svg {
+      display: block;
+    }
   }
 }

@@ -24,4 +24,32 @@
       background-color: var(--color-blue-600);
     }
   }
+
+  &--floating {
+    position: fixed;
+    bottom: 4rem;
+    right: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 4rem;
+    padding: 2rem;
+    border: none;
+    background-color: var(--color-brown-500);
+    border-radius: var(--border-circle);
+    cursor: pointer;
+    transition: all 250 ms ease-in-out;
+
+    @media (min-width: $media-sm) {
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    svg {
+      width: ;
+    }
+  }
 }

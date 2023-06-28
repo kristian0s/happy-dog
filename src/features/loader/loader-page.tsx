@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../../components/button";
 import Container from "../../components/container";
 import Devider from "../../components/devider";
