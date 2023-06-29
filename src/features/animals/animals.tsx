@@ -7,6 +7,7 @@ import Pagination from "../../components/pagination";
 import Select from "../../components/select";
 import FloatingButton from "../../components/floating-button";
 import { OptionType } from "../select/select-page";
+import { useNavigate } from "react-router-dom";
 
 export type AnimalsType = {
   animalClass: string;
@@ -14,9 +15,9 @@ export type AnimalsType = {
   habitat: string;
   name: string;
   species: string;
+  id: string;
 };
 
-const noOfItems = 20;
 const rppOptions: OptionType[] = [
   {
     label: "4 životinje",
@@ -38,6 +39,9 @@ const Animals = () => {
   const [page, setPage] = useState<number>(1);
   //rows per page (limit koliko itema vidimo od jednom)
   const [rpp, setRpp] = useState<number>(8);
+  const [noOfItems, setNoOfItems] = useState<number>(0);
+
+  const navigate = useNavigate();
 
   const getAnimals = () => {
     setLoading(true);
@@ -54,20 +58,49 @@ const Animals = () => {
         }, 300);
       })
       .catch((err) => console.log(err));
+
+    const getAnimalsCount = () => {
+      fetch(`http://localhost:3000/animals`)
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+        })
+        .then((data) => {
+          setNoOfItems(data.length);
+        })
+        .catch((err) => console.log(err));
+    };
+
+    useEffect(() => {
+      getAnimalsCount();
+    }, []);
+
+    useEffect(() => {
+      const numberOfPages = Math.ceil(noOfItems / rpp);
+      if (page > numberOfPages) {
+        setPage(numberOfPages);
+      } else {
+        getAnimals();
+      }
+    }, [page, rpp, noOfItems]);
   };
 
-  useEffect(() => {
-    const numberOfPages = Math.ceil(noOfItems / rpp);
-    if (page > numberOfPages) {
-      setPage(numberOfPages);
-    } else {
-      getAnimals();
-    }
-  }, [page, rpp]);
+  const handleDelete = (id: string) => {
+    fetch(`http://localhost:3000/animals/${id}`)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        });
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Container>
-      <Loader isActive={loading} />
       <div className="animals__header">
         <h1 className="animals__title">Animals</h1>
         <Select
@@ -79,7 +112,13 @@ const Animals = () => {
       <Devider />
       <div className="grid grid--primary type--san-serif">
         {animals.map((animal) => {
-          return <AnimalCard key={animal.name} animal={animal} />;
+          return (
+            <AnimalCard
+              onDelete={(id: string) => handleDelete(id)}
+              key={animal.name}
+              animal={animal}
+            />
+          );
         })}
       </div>
       <Pagination

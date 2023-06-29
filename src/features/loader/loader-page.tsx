@@ -22,7 +22,7 @@ const LoaderPage = () => {
       {loaderOpen ? (
         <div>
           <Devider />
-          <Loader />
+          <Loader isActive={true} />
         </div>
       ) : (
         <></>
