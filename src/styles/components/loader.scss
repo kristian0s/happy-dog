@@ -8,6 +8,9 @@
 }
 
 .loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
   width: 5rem;
   height: 5rem;
   border: 10px solid #f3f3f3;

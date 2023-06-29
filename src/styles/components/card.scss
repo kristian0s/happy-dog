@@ -30,9 +30,11 @@
     display: flex;
     align-items: center;
 
-    svg {
+    img {
       display: block;
       margin-right: 0.5rem;
+      width: 1.5rem;
+      align-self: flex-start;
 
       &:last-child {
         margin-bottom: 0;

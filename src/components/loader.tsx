@@ -1,4 +1,8 @@
-const Loader = () => {
+type LoaderProps = {
+  isActive: boolean;
+};
+
+const Loader = ({ isActive }: LoaderProps) => {
   return (
     <>
       <div className="loader"></div>

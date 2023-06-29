@@ -28,7 +28,7 @@
       &.active,
       &:hover {
         &::before {
-          width: 100%;
+          width: calc(100% + 1rem);
         }
       }
 

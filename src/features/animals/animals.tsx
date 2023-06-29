@@ -6,6 +6,7 @@ import Loader from "../../components/loader";
 import Pagination from "../../components/pagination";
 import Select from "../../components/select";
 import FloatingButton from "../../components/floating-button";
+import { OptionType } from "../select/select-page";
 
 export type AnimalsType = {
   animalClass: string;
@@ -16,12 +17,26 @@ export type AnimalsType = {
 };
 
 const noOfItems = 20;
+const rppOptions: OptionType[] = [
+  {
+    label: "4 životinje",
+    value: "4",
+  },
+  {
+    label: "8 životinje",
+    value: "8",
+  },
+  {
+    label: "12 životinje",
+    value: "12",
+  },
+];
 
 const Animals = () => {
-  const [animalsData, setAnimalsData] = useState<AnimalsType[]>([]);
+  const [animals, setAnimals] = useState<AnimalsType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [page, setPage] = useState<number>(1);
-  //rows per page - limit koliko itema vidimo odjednom
+  //rows per page (limit koliko itema vidimo od jednom)
   const [rpp, setRpp] = useState<number>(8);
 
   const getAnimals = () => {
@@ -34,36 +49,42 @@ const Animals = () => {
       })
       .then((data) => {
         setTimeout(() => {
-          setAnimalsData(data);
+          setAnimals(data);
           setLoading(false);
-        }, 2000);
+        }, 300);
       })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    getAnimals();
-  }, [page]);
+    const numberOfPages = Math.ceil(noOfItems / rpp);
+    if (page > numberOfPages) {
+      setPage(numberOfPages);
+    } else {
+      getAnimals();
+    }
+  }, [page, rpp]);
 
   return (
     <Container>
-      {/* <Loader /> */}
+      <Loader isActive={loading} />
       <div className="animals__header">
         <h1 className="animals__title">Animals</h1>
         <Select
           options={rppOptions}
           onChange={(activeRpp) => setRpp(Number(activeRpp.value))}
+          defaultValue={rppOptions[1]}
         />
       </div>
       <Devider />
-      <div className="grid grid--primary">
-        {animalsData.map((animal) => {
+      <div className="grid grid--primary type--san-serif">
+        {animals.map((animal) => {
           return <AnimalCard key={animal.name} animal={animal} />;
         })}
       </div>
       <Pagination
-        numberOfPages={Math.ceil(noOfItems / rpp)}
         activePage={page}
+        numberOfPages={Math.ceil(noOfItems / rpp)}
         onPaginate={(activePage) => setPage(activePage)}
       />
       <FloatingButton />
