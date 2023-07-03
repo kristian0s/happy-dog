@@ -6,24 +6,25 @@ import { AnimalsType } from "./animals";
 import { ValuesType } from "../contact/types";
 import Button from "../../components/button";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
-const initialData: AnimalsType = {
+export const dataHeaders = {
+  "Content-Type": "application/json",
+};
+
+const initialData: Omit<AnimalsType, "id"> = {
+  name: "",
+  species: "",
   animalClass: "",
   diet: "",
   habitat: "",
-  name: "",
-  species: "",
-};
-
-const dataHeaders = {
-  "Content-Type": "application/json",
 };
 
 const AnimalCreate = () => {
   const [inputsValue, setInputsValue] = useState<ValuesType>(initialData);
   const [error, setError] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleInputsValue = (value: string, id: string) => {
     const newState: ValuesType = { ...inputsValue };
@@ -32,42 +33,58 @@ const AnimalCreate = () => {
   };
 
   const onSubmit = (inputsValue: ValuesType) => {
+    //Varijabala koja označava jeli se dogodio error
     let getOut = false;
+    //String u kojem držimo popis inputa u kojima se dogodio errror
     let errorInputs = "";
 
-    const keys = Object.keys(inputsValue);
+    // Optimiziraniji način
+    // const keys = Object.keys(inputsValue);
+    // for (let i = 0; i < keys.length; i++) {
+    //   console.log(inputsValue[keys[i]]);
+    //   if (inputsValue[keys[i]] === "") {
+    //     getOut = true;
+    //     break;
+    //   }
+    // }
 
+    //Mapiramo sve keyjeve i provjeravamo koji su prazni
     Object.keys(inputsValue).forEach((key) => {
       if (inputsValue[key] === "") {
         getOut = true;
-        errorInputs = errorInputs + key + ",";
+        errorInputs = errorInputs + key + ", ";
       }
     });
 
     if (getOut) {
       setError(
-        "Moraju svi input biti popunjeni kako bi se zivotinja kreirala. Inputi koji se trebaju popuniti su:",
-        errorInputs.substring(0, errorInputs.length - 2)
+        "Moraju svi inputi biti popunjeni kako bi se životinja kreirala. Inputi koji se trebaju popuniti su: " +
+          errorInputs.substring(0, errorInputs.length - 2)
       );
       return;
+    } else {
+      setError("");
     }
 
-
-  //logika za request
-  fetch("http://localhost:3000/instagram", {
-    method: "POST",
-    headers: dataHeaders,
-    body: JSON.stringify(obj),
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
+    const obj = inputsValue;
+    obj.id = uuidv4();
+    console.log("json: ", JSON.stringify(obj));
+    //logika za request
+    fetch("http://localhost:3000/animals", {
+      method: "POST",
+      headers: dataHeaders,
+      body: JSON.stringify(obj),
     })
-    .then((data) => {
-      console.log(inputsValue)
-    })
-    .catch((err) => console.log(err));
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        navigate("/animals");
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Container>

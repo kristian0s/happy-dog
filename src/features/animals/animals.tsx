@@ -8,6 +8,7 @@ import Select from "../../components/select";
 import FloatingButton from "../../components/floating-button";
 import { OptionType } from "../select/select-page";
 import { useNavigate } from "react-router-dom";
+import { dataHeaders } from "./animal-create";
 
 export type AnimalsType = {
   animalClass: string;
@@ -58,46 +59,51 @@ const Animals = () => {
         }, 300);
       })
       .catch((err) => console.log(err));
-
-    const getAnimalsCount = () => {
-      fetch(`http://localhost:3000/animals`)
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-        })
-        .then((data) => {
-          setNoOfItems(data.length);
-        })
-        .catch((err) => console.log(err));
-    };
-
-    useEffect(() => {
-      getAnimalsCount();
-    }, []);
-
-    useEffect(() => {
-      const numberOfPages = Math.ceil(noOfItems / rpp);
-      if (page > numberOfPages) {
-        setPage(numberOfPages);
-      } else {
-        getAnimals();
-      }
-    }, [page, rpp, noOfItems]);
   };
 
-  const handleDelete = (id: string) => {
-    fetch(`http://localhost:3000/animals/${id}`)
+  const getAnimalsCount = () => {
+    fetch(`http://localhost:3000/animals`)
       .then((res) => {
         if (res.ok) {
           return res.json();
         }
       })
       .then((data) => {
-        });
+        setNoOfItems(data.length);
       })
       .catch((err) => console.log(err));
   };
+
+  const handleDelete = (id: string) => {
+    fetch(`http://localhost:3000/animals/${id}`, {
+      method: "DELETE",
+      headers: dataHeaders,
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then(() => {
+        getAnimals();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getAnimalsCount();
+  }, []);
+
+  useEffect(() => {
+    if (noOfItems > 0) {
+      const numberOfPages = Math.ceil(noOfItems / rpp);
+      if (page > numberOfPages) {
+        setPage(numberOfPages);
+      } else {
+        getAnimals();
+      }
+    }
+  }, [page, rpp, noOfItems]);
 
   return (
     <Container>
@@ -126,7 +132,7 @@ const Animals = () => {
         numberOfPages={Math.ceil(noOfItems / rpp)}
         onPaginate={(activePage) => setPage(activePage)}
       />
-      <FloatingButton />
+      <FloatingButton onClick={() => navigate("/animals/new")} />
     </Container>
   );
 };

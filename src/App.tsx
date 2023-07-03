@@ -20,6 +20,7 @@ function App() {
           <Route path="progress-bar" element={<ProgressBarPage />} />
           <Route path="loader" element={<LoaderPage />} />
           <Route path="select" element={<SelectPage />} />
+
           <Route path="animals" element={<Animals />} />
           <Route path="animals/new" element={<AnimalCreate />} />
           <Route
