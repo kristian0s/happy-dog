@@ -41,4 +41,18 @@
       }
     }
   }
+
+  &__delete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 7rem;
+    padding-right: 1rem;
+    margin-left: 0.4rem;
+    margin-top: 1rem;
+    background-color: var(--color-red-300);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--color-black);
+  }
 }
