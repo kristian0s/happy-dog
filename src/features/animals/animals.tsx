@@ -9,6 +9,7 @@ import FloatingButton from "../../components/floating-button";
 import { OptionType } from "../select/select-page";
 import { useNavigate } from "react-router-dom";
 import { dataHeaders } from "./animal-create";
+import Modal from "../../components/modal";
 
 export type AnimalsType = {
   animalClass: string;
@@ -133,6 +134,20 @@ const Animals = () => {
         onPaginate={(activePage) => setPage(activePage)}
       />
       <FloatingButton onClick={() => navigate("/animals/new")} />
+      <Modal
+        size="sm"
+        isOpen={modalOpen ? true : false}
+        onClose={() => setModalOpen(null)}
+        title="Jeste li sigurni da želite obrisati?"
+        onSuccess={() => {
+          if (modalOpen) {
+            handleDelete(modalOpen);
+            setModalOpen(null);
+          }
+        }}
+      >
+        Ako obrišete životinju više je necemo moci vratiti.
+      </Modal>
     </Container>
   );
 };
