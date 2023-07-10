@@ -1,0 +1,32 @@
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 8rem);
+  grid-gap: 5px;
+  background-color: var(--color-gray-900);
+  width: 38rem;
+  padding: 1rem 2rem;
+  margin: auto;
+
+  &__field {
+    grid-column: 1 / -1;
+    height: 40px;
+    text-align: right;
+    padding: 5px;
+    background-color: var(--color-gray-500);
+    cursor: text;
+  }
+
+  &__btn {
+    text-align: center;
+    background-color: var(--color-gray-800);
+    border: 1px solid var(--color-brown-600);
+    color: var(--color-white);
+    cursor: pointer;
+    padding: auto 0.5rem;
+
+    &:hover {
+      background-color: var(--color-brown-600);
+      transition: all 250ms ease-in-out;
+    }
+  }
+}

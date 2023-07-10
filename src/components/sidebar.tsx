@@ -23,6 +23,10 @@ const linkList: LinkType[] = [
     path: "/select",
     label: "Select",
   },
+  {
+    path: "/calculator",
+    label: "Calculator",
+  },
 ];
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {

@@ -10,6 +10,7 @@ import SelectPage from "./features/select/select-page";
 import Animals from "./features/animals/animals";
 import AnimalCreate from "./features/animals/animal-create";
 import AnimalEdit from "./features/animals/animal-edit";
+import Calculator from "./components/Calculator";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="progress-bar" element={<ProgressBarPage />} />
           <Route path="loader" element={<LoaderPage />} />
           <Route path="select" element={<SelectPage />} />
+          <Route path="calculator" element={<Calculator />} />
 
           <Route path="animals" element={<Animals />} />
           <Route path="animals/new" element={<AnimalCreate />} />
